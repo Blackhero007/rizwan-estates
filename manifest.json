@@ -2,23 +2,15 @@
   "name": "Rizwan Estates & Ledger",
   "short_name": "RizwanEstates",
   "description": "Professional property management, tenant records, and ledger tracking system for Rizwan Estates.",
-  "start_url": "https://blackhero007.github.io/rizwan-estates/index.html",
-  "scope": "https://blackhero007.github.io/rizwan-estates/",
+  "start_url": "/rizwan-estates/index.html",
   "display": "standalone",
   "background_color": "#0d0221",
   "theme_color": "#f72585",
   "icons": [
     {
-      "src": "https://blackhero007.github.io/rizwan-estates/icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "https://blackhero007.github.io/rizwan-estates/icon.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }
