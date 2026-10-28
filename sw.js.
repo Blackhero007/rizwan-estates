@@ -2,7 +2,8 @@ const CACHE_NAME = 'rizwan-estates-v3.24';
 const urlsToCache = [
   '/rizwan-estates/',
   '/rizwan-estates/index.html',
-  '/rizwan-estates/manifest.json'
+  '/rizwan-estates/manifest.json',
+  '/rizwan-estates/icon.png'
 ];
 
 self.addEventListener('install', event => {
