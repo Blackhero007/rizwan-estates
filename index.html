@@ -114,7 +114,15 @@
         body[data-font-size="normal"] { --base-font-size: 13px; }
         body[data-font-size="large"] { --base-font-size: 15px; }
         body[data-font-size="xlarge"] { --base-font-size: 17px; }
-
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registered successfully!', reg))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    });
+  }
+</script>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color); color: var(--text-color);
