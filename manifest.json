@@ -1,6 +1,7 @@
 {
   "name": "Rizwan Estates & Ledger",
-  "short_name": "Rizwan Estates",
+  "short_name": "RizwanEstates",
+  "description": "Professional property management, tenant records, and ledger tracking system for Rizwan Estates.",
   "start_url": "/rizwan-estates/",
   "scope": "/rizwan-estates/",
   "display": "standalone",
@@ -8,9 +9,10 @@
   "theme_color": "#f72585",
   "icons": [
     {
-      "src": "./icon.png",
+      "src": "icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
