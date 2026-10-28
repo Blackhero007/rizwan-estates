@@ -1,0 +1,15 @@
+{
+  "name": "Rizwan Estates & Ledger",
+  "short_name": "Rizwan Estates",
+  "start_url": "/rizwan-estates/",
+  "display": "standalone",
+  "background_color": "#0d0221",
+  "theme_color": "#f72585",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/Blackhero007/rizwan-estates/main/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
