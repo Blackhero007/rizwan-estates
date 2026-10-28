@@ -9,13 +9,13 @@
   "theme_color": "#f72585",
   "icons": [
     {
-      "src": "./icon.png",
+      "src": "https://blackhero007.github.io/rizwan-estates/icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon.png",
+      "src": "https://blackhero007.github.io/rizwan-estates/icon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
