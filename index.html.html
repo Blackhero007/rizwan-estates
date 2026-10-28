@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizwan Estates & Ledger - v3.24 Perfect Edition</title>
+    <style>
+        /* ================= 20 UNIQUE THEMES ================= */
+        :root, [data-theme="cyber-neon"] {
+            --bg-color: #0d0221; --card-bg: linear-gradient(135deg, #190b28 0%, #24143a 100%);
+            --text-color: #ffffff; --text-muted: #b1a7d6; --accent-color: #f72585; --accent-hover: #b5179e;
+            --border-color: #3c1559; --success-color: #4cc9f0; --warning-color: #f77f00; --danger-color: #7209b7;
+        }
+        [data-theme="emerald-matrix"] {
+            --bg-color: #022c22; --card-bg: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+            --text-color: #ecfdf5; --text-muted: #6ee7b7; --accent-color: #34d399; --accent-hover: #059669;
+            --border-color: #047857; --success-color: #10b981; --warning-color: #fbbf24; --danger-color: #f87171;
+        }
+        [data-theme="sapphire-gold"] {
+            --bg-color: #0f172a; --card-bg: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            --text-color: #f8fafc; --text-muted: #94a3b8; --accent-color: #f59e0b; --accent-hover: #d97706;
+            --border-color: #334155; --success-color: #38bdf8; --warning-color: #fb923c; --danger-color: #ef4444;
+        }
+        [data-theme="crimson-sunset"] {
+            --bg-color: #1a0505; --card-bg: linear-gradient(135deg, #2d0a0a 100%, #1a0505 0%);
+            --text-color: #fff1f2; --text-muted: #fda4af; --accent-color: #f43f5e; --accent-hover: #e11d48;
+            --border-color: #4c0519; --success-color: #34d399; --warning-color: #fbbf24; --danger-color: #ff3333;
+        }
+        [data-theme="light-clean"] {
+            --bg-color: #f1f5f9; --card-bg: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            --text-color: #0f172a; --text-muted: #475569; --accent-color: #2563eb; --accent-hover: #1d4ed8;
+            --border-color: #cbd5e1; --success-color: #16a34a; --warning-color: #d97706; --danger-color: #dc2626;
+        }
+        [data-theme="ultra-violet"] {
+            --bg-color: #11052c; --card-bg: linear-gradient(135deg, #1e0b46 0%, #11052c 100%);
+            --text-color: #fae8ff; --text-muted: #d8b4fe; --accent-color: #c084fc; --accent-hover: #a855f7;
+            --border-color: #581c87; --success-color: #2dd4bf; --warning-color: #fbbf24; --danger-color: #f43f5e;
+        }
+        [data-theme="digital-gold"] {
+            --bg-color: #09090b; --card-bg: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+            --text-color: #fef08a; --text-muted: #a1a1aa; --accent-color: #eab308; --accent-hover: #ca8a04;
+            --border-color: #3f3f46; --success-color: #22c55e; --warning-color: #f97316; --danger-color: #ef4444;
+        }
+        [data-theme="cyber-cyan"] {
+            --bg-color: #030712; --card-bg: linear-gradient(135deg, #0f172a 0%, #030712 100%);
+            --text-color: #cffafe; --text-muted: #67e8f9; --accent-color: #06b6d4; --accent-hover: #0891b2;
+            --border-color: #164e63; --success-color: #34d399; --warning-color: #facc15; --danger-color: #f43f5e;
+        }
+        [data-theme="pastel-cozy"] {
+            --bg-color: #1e1b4b; --card-bg: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+            --text-color: #e0e7ff; --text-muted: #a5b4fc; --accent-color: #818cf8; --accent-hover: #6366f1;
+            --border-color: #4338ca; --success-color: #34d399; --warning-color: #fbbf24; --danger-color: #fb7185;
+        }
+        [data-theme="matrix-hacker"] {
+            --bg-color: #000000; --card-bg: linear-gradient(135deg, #05160a 0%, #000000 100%);
+            --text-color: #4ade80; --text-muted: #166534; --accent-color: #22c55e; --accent-hover: #15803d;
+            --border-color: #14532d; --success-color: #86efac; --warning-color: #facc15; --danger-color: #f87171;
+        }
+        [data-theme="lite-gray"] {
+            --bg-color: #e2e8f0; --card-bg: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+            --text-color: #1a202c; --text-muted: #4a5568; --accent-color: #3182ce; --accent-hover: #2b6cb0;
+            --border-color: #cbd5e0; --success-color: #38a169; --warning-color: #dd6b20; --danger-color: #e53e3e;
+        }
+        [data-theme="lite-green"] {
+            --bg-color: #e6fffa; --card-bg: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            --text-color: #134e4a; --text-muted: #2c7a7b; --accent-color: #00a3c4; --accent-hover: #007791;
+            --border-color: #b2f5ea; --success-color: #2f855a; --warning-color: #d69e2e; --danger-color: #c53030;
+        }
+        [data-theme="lite-blue"] {
+            --bg-color: #ebf8ff; --card-bg: linear-gradient(135deg, #f7fafc 0%, #ebf8ff 100%);
+            --text-color: #2a4365; --text-muted: #4a5568; --accent-color: #00b5d8; --accent-hover: #0093b0;
+            --border-color: #bee3f8; --success-color: #38a169; --warning-color: #d69e2e; --danger-color: #e53e3e;
+        }
+        [data-theme="soft-yellow"] {
+            --bg-color: #fefcbf; --card-bg: linear-gradient(135deg, #fffff0 0%, #fefcbf 100%);
+            --text-color: #744210; --text-muted: #975a16; --accent-color: #d69e2e; --accent-hover: #b7791f;
+            --border-color: #faf089; --success-color: #276749; --warning-color: #b7791f; --danger-color: #9b2c2c;
+        }
+        [data-theme="bw-colorful"] {
+            --bg-color: #ffffff; --card-bg: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
+            --text-color: #000000; --text-muted: #555555; --accent-color: #2563eb; --accent-hover: #1d4ed8;
+            --border-color: #cccccc; --success-color: #059669; --warning-color: #d97706; --danger-color: #dc2626;
+        }
+        [data-theme="pastel-peach"] {
+            --bg-color: #fffaf0; --card-bg: linear-gradient(135deg, #ffffff 0%, #fffaf0 100%);
+            --text-color: #7b341e; --text-muted: #9c4221; --accent-color: #ed8936; --accent-hover: #dd6b20;
+            --border-color: #feebc8; --success-color: #38a169; --warning-color: #dd6b20; --danger-color: #c53030;
+        }
+        [data-theme="soft-lavender"] {
+            --bg-color: #f3f0ff; --card-bg: linear-gradient(135deg, #ffffff 0%, #f9f5ff 100%);
+            --text-color: #44337a; --text-muted: #553c9a; --accent-color: #805ad5; --accent-hover: #6b46c1;
+            --border-color: #e9d8fd; --success-color: #38a169; --warning-color: #d69e2e; --danger-color: #e53e3e;
+        }
+        [data-theme="rose-gold"] {
+            --bg-color: #fff5f5; --card-bg: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+            --text-color: #742a2a; --text-muted: #9b2c2c; --accent-color: #e53e3e; --accent-hover: #c53030;
+            --border-color: #fed7d7; --success-color: #2f855a; --warning-color: #dd6b20; --danger-color: #9b2c2c;
+        }
+        [data-theme="slate-teal"] {
+            --bg-color: #134e4a; --card-bg: linear-gradient(135deg, #115e59 0%, #0f4c45 100%);
+            --text-color: #f0fdf4; --text-muted: #99f6e4; --accent-color: #2dd4bf; --accent-hover: #14b8a6;
+            --border-color: #042f2e; --success-color: #34d399; --warning-color: #facc15; --danger-color: #f87171;
+        }
+        [data-theme="cool-silver"] {
+            --bg-color: #edf2f7; --card-bg: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            --text-color: #2d3748; --text-muted: #718096; --accent-color: #4a5568; --accent-hover: #2d3748;
+            --border-color: #cbd5e0; --success-color: #38a169; --warning-color: #d69e2e; --danger-color: #e53e3e;
+        }
+
+        /* Font Size Controller */
+        :root { --base-font-size: 13px; }
+        body[data-font-size="small"] { --base-font-size: 11px; }
+        body[data-font-size="normal"] { --base-font-size: 13px; }
+        body[data-font-size="large"] { --base-font-size: 15px; }
+        body[data-font-size="xlarge"] { --base-font-size: 17px; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color); color: var(--text-color);
+            margin: 0; padding: 10px; box-sizing: border-box;
+            font-size: var(--base-font-size); transition: background 0.3s, color 0.3s;
+        }
+        *, *:before, *:after { box-sizing: inherit; }
+        .container { max-width: 1400px; margin: 0 auto; width: 100%; }
+        
+        .nav-header {
+            display: flex; gap: 8px; background: var(--card-bg); padding: 12px;
+            border: 2px solid var(--accent-color); border-radius: 10px; margin-bottom: 15px;
+            align-items: center; flex-wrap: wrap; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .nav-btn {
+            background-color: var(--border-color); color: var(--text-color); border: 1px solid var(--border-color);
+            padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: var(--base-font-size);
+            flex: 1; min-width: 90px; text-align: center; transition: all 0.2s;
+        }
+        .nav-btn.active { background-color: var(--accent-color); color: #ffffff; border-color: var(--accent-color); box-shadow: 0 0 10px var(--accent-color); }
+        
+        .page-section { display: none; }
+        .page-section.active { display: block; }
+        
+        h1, h2, h3 { color: var(--accent-color); border-bottom: 2px solid var(--border-color); padding-bottom: 6px; font-size: calc(var(--base-font-size) + 2px); margin-top: 5px; }
+        h1 { font-size: calc(var(--base-font-size) + 5px); }
+        
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .summary-card {
+            background: var(--card-bg); border: 2px solid var(--border-color);
+            border-radius: 8px; padding: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .summary-card h3 { margin: 0 0 4px 0; font-size: calc(var(--base-font-size) - 2px); color: var(--text-muted); border: none; padding: 0; text-transform: uppercase; }
+        .summary-card .value { font-size: calc(var(--base-font-size) + 3px); font-weight: bold; color: var(--success-color); word-break: break-all; }
+        
+        .card {
+            background: var(--card-bg); border: 2px solid var(--border-color);
+            border-radius: 10px; padding: 14px; margin-bottom: 14px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); overflow-x: auto;
+        }
+        .form-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .form-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 140px; }
+        
+        label { font-size: calc(var(--base-font-size) - 2px); color: var(--accent-color); font-weight: 600; }
+        input, select, button {
+            padding: 8px 10px; background-color: var(--bg-color); border: 1px solid var(--border-color);
+            color: var(--text-color); border-radius: 6px; font-size: var(--base-font-size); width: 100%;
+        }
+        select { cursor: pointer; }
+        button {
+            background-color: var(--accent-color); color: #ffffff; font-weight: bold;
+            cursor: pointer; height: fit-content; align-self: flex-end; width: auto; min-width: 90px;
+            transition: all 0.2s; box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+        button:hover { filter: brightness(1.15); }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: var(--base-font-size); min-width: 850px; }
+        th, td { padding: 8px 6px; text-align: center; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+        th { background-color: var(--bg-color); color: var(--accent-color); font-weight: bold; font-size: calc(var(--base-font-size) - 2px); text-transform: uppercase; }
+        td:first-child, th:first-child { text-align: left; }
+        
+        td input[type="number"] { width: 75px; text-align: center; padding: 4px; }
+        td select { width: 100px; padding: 4px; font-size: calc(var(--base-font-size) - 1px); }
+        td input[type="date"] { width: 115px; padding: 4px; font-size: calc(var(--base-font-size) - 1px); }
+
+        .tenant-profile-box {
+            display: flex; gap: 12px; align-items: center; margin-bottom: 10px;
+            flex-wrap: wrap; background: var(--bg-color); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);
+        }
+        .tenant-img { width: 55px; height: 55px; object-fit: cover; border-radius: 50%; border: 2px solid var(--accent-color); }
+        .top-action-bar {
+            display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+            background: var(--card-bg); padding: 12px; border: 2px solid var(--accent-color); border-radius: 10px; margin-bottom: 15px;
+        }
+        
+        .tenant-card-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 6px 0; }
+        .collapsible-content { display: none; margin-top: 10px; }
+        .collapsible-content.open { display: block; }
+
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); overflow-y: auto; padding: 10px; }
+        .modal-content { background: var(--card-bg); margin: 8% auto; padding: 20px; border: 2px solid var(--accent-color); width: 100%; max-width: 500px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.5); }
+
+        /* Word Pop-up Modal - Click anywhere to close instantly */
+        #wordPopupModal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); align-items: center; justify-content: center; cursor: pointer; }
+        #wordPopupContent { background: var(--card-bg); border: 3px solid var(--accent-color); padding: 25px; border-radius: 12px; font-size: 22px; font-weight: bold; color: var(--accent-color); text-align: center; max-width: 450px; word-break: break-all; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+        .app-logo-area { display: flex; align-items: center; gap: 10px; max-width: 280px; }
+    </style>
+</head>
+<body data-theme="cyber-neon" data-font-size="normal">
+    <div class="container">
+        <!-- Main Navigation Bar -->
+        <div class="nav-header">
+            <!-- Exact Professional Logo Holder -->
+            <div id="headerLogoContainer" class="app-logo-area"></div>
+            
+            <button class="nav-btn active" onclick="switchPage('tenantsPage')" id="btnTenantsPage">🏢 Tenants</button>
+            <button class="nav-btn" onclick="switchPage('expensesPage')" id="btnExpensesPage">💰 Expenses</button>
+            
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <label style="color: var(--accent-color); margin:0;">🎨 Theme:</label>
+                <select id="themeSelector" onchange="changeTheme(this.value)" style="width: 120px; padding: 5px;">
+                    <option value="cyber-neon">1. Cyber Neon</option>
+                    <option value="emerald-matrix">2. Emerald Matrix</option>
+                    <option value="sapphire-gold">3. Sapphire & Gold</option>
+                    <option value="crimson-sunset">4. Crimson Sunset</option>
+                    <option value="light-clean">5. Light Clean Pro</option>
+                    <option value="ultra-violet">6. Ultra Violet</option>
+                    <option value="digital-gold">7. Digital Gold</option>
+                    <option value="cyber-cyan">8. Cyber Cyan</option>
+                    <option value="pastel-cozy">9. Pastel Cozy</option>
+                    <option value="matrix-hacker">10. Matrix Hacker</option>
+                    <option value="lite-gray">11. Lite Gray Modern</option>
+                    <option value="lite-green">12. Lite Green Nature</option>
+                    <option value="lite-blue">13. Lite Blue Sky</option>
+                    <option value="soft-yellow">14. Soft Yellow</option>
+                    <option value="bw-colorful">15. Classic B&W</option>
+                    <option value="pastel-peach">16. Pastel Peach</option>
+                    <option value="soft-lavender">17. Soft Lavender</option>
+                    <option value="rose-gold">18. Rose Gold Soft</option>
+                    <option value="slate-teal">19. Slate Teal Dark</option>
+                    <option value="cool-silver">20. Cool Silver</option>
+                </select>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <label style="color: var(--accent-color); margin:0;">✨ Logo:</label>
+                <select id="logoSelector" onchange="changeLogoStyle(this.value)" style="width: 100px; padding: 5px;">
+                    <option value="key">Key Monogram</option>
+                    <option value="archR">3D 'R' Skyline</option>
+                </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <label style="color: var(--accent-color); margin:0;">🔤 Font:</label>
+                <select id="fontSizeSelector" onchange="changeFontSize(this.value)" style="width: 90px; padding: 5px;">
+                    <option value="small">Small</option>
+                    <option value="normal" selected>Normal</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">X-Large</option>
+                </select>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <label style="color: var(--accent-color); margin:0;">📅 Year:</label>
+                <input type="number" id="ledgerYearInput" value="2026" onchange="updateLedgerYear(this.value)" style="width: 65px; padding: 4px;">
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 4px;">
+                <button id="wordPopupToggleBtn" onclick="toggleWordPopupMode()" style="background-color: var(--border-color); color: var(--accent-color); font-size: 11px; padding: 6px 8px;">🔍 Pop-up: OFF</button>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 1: TENANTS & RENTS ================= -->
+        <div id="tenantsPage" class="page-section active">
+            <h1>🏢 Property & Tenant Management</h1>
+            
+            <div class="top-action-bar">
+                <button onclick="setBackupFolder()" style="background-color: var(--success-color); color: #fff; padding: 8px 12px;">📁 Connect Drive</button>
+                <button onclick="exportAllData()" style="background-color: var(--accent-color); color: #ffffff; padding: 8px 12px;">📥 Download Backup</button>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <label style="color:var(--text-color); margin:0;">Load File:</label>
+                    <input type="file" id="importFile" onchange="importAllData(event)" style="border:none; width: auto; background:transparent;">
+                </div>
+                <button onclick="promptMasterPasswordSetup()" style="background-color: var(--border-color); color: var(--accent-color); padding: 6px 10px;">🔒 Password</button>
+                <span id="folderStatus" style="color: var(--text-muted); width: 100%;">📂 Storage: Active</span>
+            </div>
+
+            <!-- Top Summary Dashboard -->
+            <div class="summary-grid">
+                <div class="summary-card"><h3>📊 Yearly Rent</h3><div class="value" id="sumYearlyRent">PKR 0</div></div>
+                <div class="summary-card"><h3>💰 Yearly Paid</h3><div class="value" id="sumYearlyPaid" style="color: var(--success-color);">PKR 0</div></div>
+                <div class="summary-card"><h3 id="lblMonthlyRentTitle">📅 Rent (Month)</h3><div class="value" id="sumMonthlyRent">PKR 0</div></div>
+                <div class="summary-card"><h3 id="lblMonthlyPaidTitle">💵 Paid (Month)</h3><div class="value" id="sumMonthlyPaid" style="color: var(--success-color);">PKR 0</div></div>
+                <div class="summary-card"><h3>🏦 Meezan</h3><div class="value" id="sumMonthMeezan">PKR 0</div></div>
+                <div class="summary-card"><h3>📱 Easypaisa</h3><div class="value" id="sumMonthEasypaisa">PKR 0</div></div>
+                <div class="summary-card"><h3>⚡ JazzCash</h3><div class="value" id="sumMonthJazzcash" style="color: var(--warning-color);">PKR 0</div></div>
+                <div class="summary-card"><h3>🔒 Security</h3><div class="value" id="sumTotalSecurity" style="color: var(--warning-color);">PKR 0</div></div>
+                <div class="summary-card"><h3>Next Increment</h3><div class="value" id="sumTotalIncrement" style="color: var(--accent-color);">PKR 0</div></div>
+                <div class="summary-card"><h3>Active Tenants</h3><div class="value" id="sumTotalTenants" style="color: var(--success-color);">0</div></div>
+                <div class="summary-card"><h3>Pending Dues</h3><div class="value" id="sumTotalDues" style="color: var(--danger-color);">PKR 0</div></div>
+            </div>
+
+            <!-- Add New Tenant Card -->
+            <div class="card">
+                <h2>➕ Add New Tenant / Property</h2>
+                <div class="form-row">
+                    <div class="form-group"><label>Tenant Name</label><input type="text" id="tenantName" placeholder="e.g. Imran Abbas"></div>
+                    <div class="form-group"><label>Property Category</label><select id="propertyType"><option value="Shop">Shop</option><option value="House">House</option><option value="Upper Portion">Upper Portion</option><option value="Lower Portion">Lower Portion</option><option value="Plot">Plot</option></select></div>
+                    <div class="form-group"><label>Unit / Property No</label><select id="unitNo">
+                        <option value="Unit #001">Unit #001</option><option value="Unit #002">Unit #002</option><option value="Unit #003">Unit #003</option><option value="Unit #004">Unit #004</option><option value="Unit #005">Unit #005</option>
+                    </select></div>
+                    <div class="form-group"><label>Details</label><input type="text" id="propertyDetails" placeholder="General Store..."></div>
+                    <div class="form-group"><label>Address</label><input type="text" id="propertyAddress" placeholder="Full address..."></div>
+                    <div class="form-group"><label>Monthly Rent (PKR)</label><input type="number" id="defaultRent" value="24000"></div>
+                    <div class="form-group"><label>Security Deposit</label><input type="number" id="securityDeposit" value="0"></div>
+                    <div class="form-group">
+                        <label>Security Source</label>
+                        <select id="securitySource">
+                            <option value="Cash">Cash</option><option value="Meezan Bank">Meezan Bank</option><option value="Easypaisa">Easypaisa</option><option value="JazzCash">JazzCash</option>
+                        </select>
+                    </div>
+                    <div class="form-group"><label>Joining Date</label><input type="date" id="joiningDate"></div>
+                    <div class="form-group"><label>Lefting Date</label><input type="date" id="leftingDate"></div>
+                    <div class="form-group">
+                        <label>Photo</label>
+                        <div style="display: flex; gap: 4px;">
+                            <input type="file" id="tenantPhoto" accept="image/*" style="flex:1;">
+                            <button type="button" onclick="openCameraCapture()" style="background-color: var(--accent-color); color: white; min-width: auto; padding: 4px 8px;">📷</button>
+                        </div>
+                    </div>
+                    <div class="form-group"><label>Agreement</label><input type="file" id="tenantDoc"></div>
+                    <button onclick="addTenant()" style="padding: 8px 14px;">Save Tenant</button>
+                </div>
+            </div>
+
+            <!-- Master Tenant List Toggle & Dropdown Bar -->
+            <div class="card" style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <button onclick="toggleTenantListVisibility()" id="toggleTenantListBtn" style="background: var(--accent-color); color: #fff; padding: 8px 16px; flex: 1; min-width: 200px;">
+                    📂 TENANTS LIST (Click to Hide / Show All)
+                </button>
+                <div style="flex: 2; min-width: 250px;">
+                    <label style="color: var(--success-color); font-weight: bold;">🔍 Quick Jump & Select Tenant:</label>
+                    <select id="jumpTenantSelect" onchange="jumpToTenantCard(this.value)" style="margin-top: 3px;">
+                        <option value="">-- All Tenants Visible (Select one to filter) --</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Reset Action -->
+            <div class="card" style="display: flex; gap: 10px; align-items: center; justify-content: flex-end; padding: 8px 12px;">
+                <button onclick="clearAllData()" style="background-color: var(--danger-color); color: white; padding: 5px 10px;">⚠️ Reset All Data</button>
+            </div>
+
+            <!-- Tenants List Container -->
+            <div id="tenantsContainer"></div>
+        </div>
+
+        <!-- ================= PAGE 2: BANK & EXPENSES ================= -->
+        <div id="expensesPage" class="page-section">
+            <h1>💰 Bank & Expenses Management</h1>
+            <div class="summary-grid">
+                <div class="summary-card"><h3>Total Income</h3><div class="value" id="expSumIncome">PKR 0</div></div>
+                <div class="summary-card"><h3>Total Expenses</h3><div class="value" id="expSumExpense" style="color: var(--danger-color);">PKR 0</div></div>
+                <div class="summary-card"><h3>Net Balance</h3><div class="value" id="expNetBalance" style="color: var(--success-color);">PKR 0</div></div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
+                    <h2 style="margin:0; border:none; padding:0;">🏦 BANK & MONTHLY LEDGER BOXES</h2>
+                    <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                        <select id="bankMonthFilter" onchange="renderBankHistory()" style="padding: 6px;">
+                            <option value="all">🔍 Filter by Month</option>
+                        </select>
+                        <button onclick="toggleAllMonthsHistory()" id="toggleMonthsBtn" style="background-color: var(--border-color); color: var(--accent-color); padding: 6px 10px;">📜 Show All Boxes</button>
+                    </div>
+                </div>
+                <div id="bankHistoryContainer"></div>
+            </div>
+
+            <div class="card">
+                <h2>➕ Add Income / Expense Transaction</h2>
+                <div class="form-row">
+                    <div class="form-group"><label>Date</label><input type="date" id="txDate"></div>
+                    <div class="form-group"><label>Type</label><select id="txType"><option value="Expense">Expense (Kharcha)</option><option value="Income">Income (Amdani)</option></select></div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="txCategory">
+                            <option value="School Fees">School Fees</option><option value="ATM">ATM</option><option value="Other Income">Other Income</option>
+                            <option value="Property Tax">Property Tax</option><option value="Court Fees">Court Fees</option><option value="Wakeel Fees">Wakeel Fees</option>
+                            <option value="Grocery">Grocery</option><option value="Family">Family</option><option value="Utility / Bills">Utility / Bills</option>
+                            <option value="Maintenance">Maintenance</option><option value="Salary">Salary</option><option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Source</label>
+                        <select id="txSource"><option value="Cash">Cash</option><option value="Meezan Bank">Meezan Bank</option><option value="Easypaisa">Easypaisa</option><option value="JazzCash">JazzCash</option></select>
+                    </div>
+                    <div class="form-group"><label>Amount (PKR)</label><input type="number" id="txAmount" placeholder="0"></div>
+                    <div class="form-group"><label>Description</label><input type="text" id="txDesc" placeholder="Details..."></div>
+                    <button onclick="addTransaction()" style="padding: 8px 14px;">Add Transaction</button>
+                </div>
+            </div>
+
+            <!-- Advanced Filter & Search Bar for Transactions Ledger -->
+            <div class="card" style="border: 2px solid var(--accent-color);">
+                <h2>🔍 Advanced Search & Filters</h2>
+                <div class="form-row">
+                    <div class="form-group"><label>Filter Month</label><select id="filterTxMonth" onchange="renderTransactions()"><option value="all">All Months</option></select></div>
+                    <div class="form-group"><label>Filter Year</label><select id="filterTxYear" onchange="renderTransactions()"><option value="2026">2026</option><option value="all">All Years</option></select></div>
+                    <div class="form-group"><label>Filter Category</label><select id="filterTxCat" onchange="renderTransactions()"><option value="all">All Categories</option></select></div>
+                    <div class="form-group"><label>Search Word</label><input type="text" id="filterTxSearch" oninput="renderTransactions()" placeholder="Search description..."></div>
+                    <button onclick="resetTxFilters()" style="background-color: var(--border-color); color: var(--accent-color);">Reset</button>
+                </div>
+                <div style="margin-top: 8px; color: var(--success-color); font-weight: bold;" id="filteredTxSum">Filtered Total Sum: PKR 0</div>
+            </div>
+
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <h2 style="margin:0; border:none; padding:0;">📜 Transactions Ledger</h2>
+                    <button onclick="toggleTxLedgerVisibility()" id="toggleTxLedgerBtn" style="background-color: var(--border-color); color: var(--accent-color); padding: 5px 10px;">🔼 Hide Ledger</button>
+                </div>
+                <div id="txLedgerContainer" style="overflow-x: auto;">
+                    <table>
+                        <thead><tr><th>Date</th><th>Type</th><th>Category</th><th>Source</th><th>Amount (PKR)</th><th>Description</th><th>Action</th></tr></thead>
+                        <tbody id="transactionsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Direct Camera Input -->
+    <input type="file" id="directCameraInput" accept="image/*" capture="environment" style="display:none;" onchange="handleDirectCamera(event)">
+
+    <!-- Word Pop-up Modal (Click anywhere to close) -->
+    <div id="wordPopupModal" onclick="closeWordPopup()">
+        <div id="wordPopupContent"></div>
+    </div>
+
+    <!-- Edit Tenant Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: var(--accent-color); margin-top:0;">✏️ Edit Tenant & Property Details</h2>
+            <input type="hidden" id="editIndex">
+            <div class="form-row">
+                <div class="form-group"><label>Tenant Name</label><input type="text" id="editName"></div>
+                <div class="form-group"><label>Property Category</label><select id="editPropertyType"><option value="Shop">Shop</option><option value="House">House</option><option value="Upper Portion">Upper Portion</option><option value="Lower Portion">Lower Portion</option><option value="Plot">Plot</option></select></div>
+                <div class="form-group"><label>Unit / Property No</label><select id="editUnitNo">
+                    <option value="Unit #001">Unit #001</option><option value="Unit #002">Unit #002</option><option value="Unit #003">Unit #003</option><option value="Unit #004">Unit #004</option><option value="Unit #005">Unit #005</option>
+                </select></div>
+                <div class="form-group"><label>Details</label><input type="text" id="editPropertyDetails"></div>
+                <div class="form-group"><label>Address</label><input type="text" id="editPropertyAddress"></div>
+                <div class="form-group"><label>Monthly Rent (PKR)</label><input type="number" id="editDefaultRent"></div>
+                <div class="form-group"><label>Security Deposit</label><input type="number" id="editSecurityDeposit"></div>
+                <div class="form-group">
+                    <label>Security Source</label>
+                    <select id="editSecuritySource">
+                        <option value="Cash">Cash</option><option value="Meezan Bank">Meezan Bank</option><option value="Easypaisa">Easypaisa</option><option value="JazzCash">JazzCash</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Joining Date</label><input type="date" id="editJoiningDate"></div>
+                <div class="form-group"><label>Lefting Date</label><input type="date" id="editLeftingDate"></div>
+                <div class="form-group"><label>Update Photo</label><input type="file" id="editTenantPhoto" accept="image/*" capture="environment"></div>
+                <div class="form-group"><label>Update Agreement</label><input type="file" id="editTenantDoc"></div>
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px;">
+                <button onclick="closeEditModal()" style="background-color: var(--border-color); color: var(--text-color); padding: 6px 12px;">Cancel</button>
+                <button onclick="saveEditedTenant()" style="background-color: var(--success-color); color: #fff; padding: 6px 12px;">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Transaction Modal -->
+    <div id="editTxModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color: var(--accent-color); margin-top:0;">✏️ Edit Transaction</h2>
+            <input type="hidden" id="editTxIndex">
+            <div class="form-row">
+                <div class="form-group"><label>Date</label><input type="date" id="editTxDate"></div>
+                <div class="form-group"><label>Type</label><select id="editTxType"><option value="Expense">Expense</option><option value="Income">Income</option></select></div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="editTxCategory">
+                        <option value="School Fees">School Fees</option><option value="ATM">ATM</option><option value="Other Income">Other Income</option>
+                        <option value="Property Tax">Property Tax</option><option value="Court Fees">Court Fees</option><option value="Wakeel Fees">Wakeel Fees</option>
+                        <option value="Grocery">Grocery</option><option value="Family">Family</option><option value="Utility / Bills">Utility / Bills</option>
+                    </select>
+                </div>
+                <div class="form-group"><label>Source</label><select id="editTxSource"><option value="Cash">Cash</option><option value="Meezan Bank">Meezan Bank</option><option value="Easypaisa">Easypaisa</option><option value="JazzCash">JazzCash</option></select></div>
+                <div class="form-group"><label>Amount (PKR)</label><input type="number" id="editTxAmount"></div>
+                <div class="form-group"><label>Description</label><input type="text" id="editTxDesc"></div>
+            </div>
+            <div style="display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px;">
+                <button onclick="closeEditTxModal()" style="background-color: var(--border-color); color: var(--text-color); padding: 6px 12px;">Cancel</button>
+                <button onclick="saveEditedTransaction()" style="background-color: var(--success-color); color: #fff; padding: 6px 12px;">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Prompt Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content" style="max-width: 350px; text-align: center;">
+            <h2 style="color: var(--accent-color); margin-top:0;">🔒 Security Password Required</h2>
+            <p style="color: var(--text-muted);">Please enter password to unlock editing:</p>
+            <input type="password" id="modalPasswordInput" placeholder="Enter password..." style="margin-bottom: 12px; text-align: center;">
+            <div style="display: flex; gap: 8px; justify-content: center;">
+                <button onclick="closePasswordModal()" style="background-color: var(--border-color); color: var(--text-color);">Cancel</button>
+                <button onclick="verifyPassword()" style="background-color: var(--success-color); color: #fff;">Unlock</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const currentMonthIndex = new Date().getMonth();
+        let allTenants = [], allTransactions = [], expandedTenants = {}, tenantListVisible = true;
+        let selectedFilterTenantIndex = "", showAllMonthsHistoryFlag = false, rootDirHandle = null;
+        let capturedPhotoBase64 = '', txLedgerVisible = true, masterPassword = '', pendingActionCallback = null;
+        let currentTheme = 'cyber-neon', currentFontSize = 'normal', wordPopupActive = false;
+        let currentLogoStyle = 'key', ledgerYear = '2026';
+
+        // Exact Professional SVG Logos Matching Approved Concepts
+        const svgLogoTemplates = {
+            key: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 55" width="100%" height="42">
+                <g transform="translate(2, 2)">
+                    <path d="M 26 4 L 10 4 L 10 45 L 26 45 C 38 45, 38 24, 26 24 L 18 24 Z" fill="none" stroke="var(--accent-color)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="32" y1="45" x2="32" y2="12" stroke="var(--success-color)" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M 32 12 L 32 6 C 32 2, 26 2, 26 6 L 26 16 L 38 16 L 38 6 C 38 2, 32 2, 32 6 Z" fill="var(--success-color)"/>
+                    <rect x="29" y="28" width="5" height="4" fill="var(--text-color)"/>
+                    <rect x="29" y="35" width="5" height="4" fill="var(--text-color)"/>
+                </g>
+                <g transform="translate(48, 19)">
+                    <text x="0" y="0" font-family="'Segoe UI', Tahoma, sans-serif" font-size="14" font-weight="900" fill="var(--text-color)" letter-spacing="1">RIZWAN <tspan fill="var(--accent-color)">ESTATES</tspan></text>
+                    <text x="1" y="15" font-family="'Segoe UI', Tahoma, sans-serif" font-size="8.5" font-weight="600" fill="var(--success-color)" letter-spacing="2">LEDGER <tspan class="dynamic-year-val">${ledgerYear}</tspan></text>
+                </g>
+            </svg>`,
+            archR: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 55" width="100%" height="42">
+                <g transform="translate(2, 2)">
+                    <path d="M 30 4 L 10 4 L 10 46 L 30 46 C 48 46, 48 25, 30 25 L 18 25 Z" fill="var(--accent-color)"/>
+                    <path d="M 30 25 C 41 25, 41 37, 30 37 L 18 37 L 18 25 Z" fill="var(--bg-color)"/>
+                    <line x1="24" y1="9" x2="36" y2="9" stroke="var(--bg-color)" stroke-width="2"/>
+                    <line x1="24" y1="15" x2="36" y2="15" stroke="var(--bg-color)" stroke-width="2"/>
+                </g>
+                <g transform="translate(50, 19)">
+                    <text x="0" y="0" font-family="'Segoe UI', Tahoma, sans-serif" font-size="14" font-weight="900" fill="var(--text-color)" letter-spacing="1">RIZWAN <tspan fill="var(--accent-color)">ESTATES</tspan></text>
+                    <text x="1" y="15" font-family="'Segoe UI', Tahoma, sans-serif" font-size="8.5" font-weight="600" fill="var(--success-color)" letter-spacing="2">LEDGER <tspan class="dynamic-year-val">${ledgerYear}</tspan></text>
+                </g>
+            </svg>`
+        };
+
+        const dbPromise = new Promise((resolve, reject) => {
+            const req = indexedDB.open('RizwanEstatesV324DB', 1);
+            req.onupgradeneeded = e => {
+                const db = e.target.result;
+                if (!db.objectStoreNames.contains('store')) db.createObjectStore('store');
+            };
+            req.onsuccess = e => resolve(e.target.result);
+            req.onerror = e => reject(e.target.error);
+        });
+
+        async function dbGet(key) {
+            const db = await dbPromise;
+            return new Promise((resolve) => {
+                const tx = db.transaction('store', 'readonly');
+                const req = tx.objectStore('store').get(key);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => resolve(null);
+            });
+        }
+
+        async function dbSet(key, val) {
+            const db = await dbPromise;
+            return new Promise((resolve) => {
+                const tx = db.transaction('store', 'readwrite');
+                tx.objectStore('store').put(val, key);
+                tx.oncomplete = () => resolve(true);
+                tx.onerror = () => resolve(false);
+            });
+        }
+
+        async function loadAppData() {
+            let tenants = await dbGet('tenants'), txs = await dbGet('transactions');
+            let pwd = await dbGet('masterPassword'), savedTheme = await dbGet('selectedTheme');
+            let savedFontSize = await dbGet('selectedFontSize'), savedLogo = await dbGet('selectedLogo');
+            let savedYear = await dbGet('ledgerYear');
+
+            if (!tenants || tenants.length === 0) tenants = JSON.parse(localStorage.getItem('rizwanEstates_tenants_v1')) || [];
+            if (!txs || txs.length === 0) txs = JSON.parse(localStorage.getItem('rizwanEstates_tx_v1')) || [];
+            masterPassword = pwd || '';
+            currentTheme = savedTheme || 'cyber-neon';
+            currentFontSize = savedFontSize || 'normal';
+            currentLogoStyle = savedLogo || 'key';
+            ledgerYear = savedYear || new Date().getFullYear().toString();
+
+            document.body.setAttribute('data-theme', currentTheme);
+            document.body.setAttribute('data-font-size', currentFontSize);
+
+            const thSel = document.getElementById('themeSelector'); if(thSel) thSel.value = currentTheme;
+            const fsSel = document.getElementById('fontSizeSelector'); if(fsSel) fsSel.value = currentFontSize;
+            const lgSel = document.getElementById('logoSelector'); if(lgSel) lgSel.value = currentLogoStyle;
+            const yrInput = document.getElementById('ledgerYearInput'); if(yrInput) yrInput.value = ledgerYear;
+
+            allTenants = tenants; allTransactions = txs || [];
+            renderHeaderLogo();
+            checkAndAutoGenerateMonths();
+            renderTenants(); renderTransactions(); renderBankHistory();
+            populateTxFilterDropdowns(); initPersistentFolder();
+        }
+
+        function renderHeaderLogo() {
+            const container = document.getElementById('headerLogoContainer');
+            if(container) {
+                container.innerHTML = svgLogoTemplates[currentLogoStyle] || svgLogoTemplates['key'];
+            }
+        }
+
+        async function changeLogoStyle(logoKey) {
+            currentLogoStyle = logoKey;
+            renderHeaderLogo();
+            await dbSet('selectedLogo', logoKey);
+        }
+
+        async function updateLedgerYear(newYear) {
+            ledgerYear = newYear;
+            renderHeaderLogo();
+            await dbSet('ledgerYear', newYear);
+            calculateSummary();
+            renderBankHistory();
+        }
+
+        async function changeTheme(themeName) {
+            currentTheme = themeName;
+            document.body.setAttribute('data-theme', themeName);
+            await dbSet('selectedTheme', themeName);
+            renderHeaderLogo();
+        }
+
+        async function changeFontSize(sizeName) {
+            currentFontSize = sizeName;
+            document.body.setAttribute('data-font-size', sizeName);
+            await dbSet('selectedFontSize', sizeName);
+        }
+
+        function toggleWordPopupMode() {
+            wordPopupActive = !wordPopupActive;
+            const btn = document.getElementById('wordPopupToggleBtn');
+            btn.innerText = wordPopupActive ? "🔍 Pop-up: ON" : "🔍 Pop-up: OFF";
+            btn.style.backgroundColor = wordPopupActive ? "var(--accent-color)" : "var(--border-color)";
+            btn.style.color = wordPopupActive ? "#ffffff" : "var(--accent-color)";
+            alert(wordPopupActive ? "✅ Word Pop-up Mode ON!" : "❌ Word Pop-up Mode OFF.");
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!wordPopupActive) return;
+            if (['BUTTON', 'INPUT', 'SELECT', 'OPTION', 'LABEL', 'SVG', 'PATH', 'TEXT'].includes(e.target.tagName)) return;
+            let text = e.target.innerText.trim();
+            if (text && text.length < 60) {
+                document.getElementById('wordPopupContent').innerText = text;
+                document.getElementById('wordPopupModal').style.display = 'flex';
+            }
+        });
+
+        function closeWordPopup() { 
+            document.getElementById('wordPopupModal').style.display = 'none'; 
+        }
+
+        function checkAndAutoGenerateMonths() {
+            let now = new Date(), curMonthIdx = now.getMonth();
+            allTenants.forEach(tenant => {
+                let joiningIdx = 7;
+                if (tenant.joiningDate && tenant.joiningDate !== '-') {
+                    let jd = new Date(tenant.joiningDate);
+                    if (!isNaN(jd.getTime())) joiningIdx = jd.getMonth();
+                }
+                while(tenant.ledger.length <= curMonthIdx) {
+                    let nextMIdx = tenant.ledger.length;
+                    let lastMonthLedger = tenant.ledger[tenant.ledger.length - 1] || {};
+                    let carriedDues = Number(lastMonthLedger.newDues || 0);
+                    let rentVal = Number(tenant.defaultRent || 24000);
+                    tenant.ledger.push({
+                        month: monthNames[nextMIdx], rentAmount: rentVal, oldDues: carriedDues, totalPayable: rentVal + carriedDues,
+                        paid: 0, source: "Cash", newDues: rentVal + carriedDues, advance: 0, status: "Unpaid", date: "-"
+                    });
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const txDateEl = document.getElementById('txDate');
+            if(txDateEl) { txDateEl.value = new Date().toISOString().split('T')[0]; }
+            loadAppData();
+        });
+
+        function openCameraCapture() { document.getElementById('directCameraInput').click(); }
+        function handleDirectCamera(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) { capturedPhotoBase64 = e.target.result; alert("✅ Photo captured!"); };
+            reader.readAsDataURL(file);
+        }
+
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if(pageId === 'tenantsPage') {
+                document.getElementById('btnTenantsPage').classList.add('active'); renderTenants();
+            } else {
+                document.getElementById('btnExpensesPage').classList.add('active'); renderTransactions(); renderBankHistory();
+            }
+        }
+
+        function requirePassword(callback) {
+            if (!masterPassword) { callback(); }
+            else {
+                pendingActionCallback = callback;
+                document.getElementById('modalPasswordInput').value = '';
+                document.getElementById('passwordModal').style.display = 'block';
+            }
+        }
+        function closePasswordModal() { document.getElementById('passwordModal').style.display = 'none'; pendingActionCallback = null; }
+        function verifyPassword() {
+            if (document.getElementById('modalPasswordInput').value === masterPassword) {
+                closePasswordModal(); if (pendingActionCallback) pendingActionCallback();
+            } else { alert('❌ Incorrect Password!'); }
+        }
+        async function promptMasterPasswordSetup() {
+            let newPwd = prompt("Enter new master password (blank to remove):", masterPassword);
+            if (newPwd !== null) {
+                masterPassword = newPwd.trim();
+                await dbSet('masterPassword', masterPassword);
+                alert(masterPassword ? "✅ Password set!" : "✅ Password removed.");
+            }
+        }
+
+        async function initPersistentFolder() {
+            try {
+                const storedHandle = await dbGet('backupFolderHandle');
+                if (storedHandle && (await storedHandle.queryPermission({ mode: 'readwrite' })) === 'granted') {
+                    rootDirHandle = storedHandle;
+                    document.getElementById('folderStatus').innerText = `📂 Drive Folder Connected`;
+                    document.getElementById('folderStatus').style.color = 'var(--success-color)';
+                    await readDataFromDisk();
+                }
+            } catch (e) { console.log(e); }
+        }
+
+        async function setBackupFolder() {
+            if (!window.showDirectoryPicker) { alert("Not supported on this browser."); return; }
+            try {
+                rootDirHandle = await window.showDirectoryPicker();
+                await dbSet('backupFolderHandle', rootDirHandle);
+                document.getElementById('folderStatus').innerText = `📂 Drive Folder Connected!`;
+                document.getElementById('folderStatus').style.color = 'var(--success-color)';
+                alert("✅ Folder connected!"); await readDataFromDisk(); triggerAutoSaveToDisk();
+            } catch (err) { console.error(err); }
+        }
+
+        async function readDataFromDisk() {
+            if (!rootDirHandle) return;
+            try {
+                const yearDir = await rootDirHandle.getDirectoryHandle(ledgerYear, { create: false });
+                const masterFileHandle = await yearDir.getFileHandle('Rizwan_Estates_Master_Backup.json', { create: false });
+                const parsed = JSON.parse(await (await masterFileHandle.getFile()).text());
+                if (parsed && (parsed.tenants || parsed.transactions)) {
+                    allTenants = parsed.tenants || []; allTransactions = parsed.transactions || [];
+                    await dbSet('tenants', allTenants); await dbSet('transactions', allTransactions);
+                    checkAndAutoGenerateMonths(); renderTenants(); renderTransactions(); renderBankHistory();
+                }
+            } catch(err) { console.log(err); }
+        }
+
+        async function triggerAutoSaveToDisk() {
+            if (!rootDirHandle) return;
+            try {
+                const yearDir = await rootDirHandle.getDirectoryHandle(ledgerYear, { create: true });
+                const blob = new Blob([JSON.stringify({ tenants: allTenants, transactions: allTransactions }, null, 2)], { type: 'application/json;charset=utf-8' });
+                const masterFileHandle = await yearDir.getFileHandle('Rizwan_Estates_Master_Backup.json', { create: true });
+                const writable = await masterFileHandle.createWritable();
+                await writable.write(blob); await writable.close();
+            } catch (err) { console.error(err); }
+        }
+
+        function runCalculations(tenant) {
+            let joiningMonthIndex = 7;
+            if (tenant.joiningDate && tenant.joiningDate !== '-') {
+                let jDate = new Date(tenant.joiningDate);
+                if (!isNaN(jDate.getTime())) joiningMonthIndex = jDate.getMonth();
+            }
+            let leftingMonthIndex = currentMonthIndex;
+            if (tenant.leftingDate && tenant.leftingDate !== '-') {
+                let lDate = new Date(tenant.leftingDate);
+                if (!isNaN(lDate.getTime())) { leftingMonthIndex = lDate.getMonth(); tenant.isClosed = true; }
+                else { tenant.isClosed = false; }
+            } else { tenant.isClosed = false; }
+
+            if (tenant.increment === undefined || tenant.increment === null || tenant.increment === '') {
+                tenant.increment = Math.round((Number(tenant.defaultRent) || 7000) * 0.10);
+            }
+
+            let runningDues = 0;
+            tenant.ledger.forEach((m, idx) => {
+                if (idx < joiningMonthIndex || idx > leftingMonthIndex) {
+                    m.rentAmount = 0; m.totalPayable = 0; m.paid = 0; m.source = m.source || 'Cash';
+                    m.oldDues = 0; m.newDues = 0; m.advance = 0; m.status = "-"; m.date = "-";
+                    return;
+                }
+                let finalRent = Number(m.rentAmount);
+                if (isNaN(finalRent) || finalRent <= 0) { finalRent = Number(tenant.defaultRent) || 24000; m.rentAmount = finalRent; }
+                if(!m.source) m.source = 'Cash';
+
+                if (idx === joiningMonthIndex) {
+                    if (m.oldDues === undefined || isNaN(m.oldDues)) m.oldDues = 0;
+                    runningDues = Number(m.oldDues);
+                } else { m.oldDues = runningDues; }
+
+                let totalPayable = finalRent + Number(m.oldDues);
+                if(totalPayable < 0) totalPayable = 0;
+                let paid = Number(m.paid) || 0;
+                if(paid > 0 && (!m.date || m.date === '-')) m.date = new Date().toISOString().split('T')[0];
+
+                if(paid >= totalPayable && totalPayable > 0) m.status = "Paid";
+                else if(paid > 0 && paid < totalPayable) m.status = "Partial";
+                else m.status = "Unpaid";
+
+                let balance = totalPayable - paid;
+                if(balance > 0) { m.newDues = balance; m.advance = 0; runningDues = balance; }
+                else if(balance < 0) { m.newDues = 0; m.advance = Math.abs(balance); runningDues = 0; }
+                else { m.newDues = 0; m.advance = 0; runningDues = 0; }
+                m.totalPayable = totalPayable;
+            });
+        }
+
+        async function saveToStorage() {
+            allTenants.forEach(t => runCalculations(t));
+            await dbSet('tenants', allTenants); await dbSet('transactions', allTransactions);
+            localStorage.setItem('rizwanEstates_tenants_v1', JSON.stringify(allTenants));
+            localStorage.setItem('rizwanEstates_tx_v1', JSON.stringify(allTransactions));
+            calculateSummary(); updateJumpDropdown(); updateBankMonthDropdown(); populateTxFilterDropdowns();
+            renderBankHistory(); renderTransactions(); triggerAutoSaveToDisk();
+        }
+
+        function toggleTenantListVisibility() {
+            tenantListVisible = !tenantListVisible;
+            document.getElementById('toggleTenantListBtn').innerText = tenantListVisible ? "📂 TENANTS LIST (Click to Hide All)" : "📁 TENANTS LIST (Click to Show All)";
+            renderTenants();
+        }
+
+        function updateJumpDropdown() {
+            const select = document.getElementById('jumpTenantSelect');
+            if(!select) return;
+            let currentVal = select.value;
+            select.innerHTML = '<option value="">-- All Tenants Visible (Select one to filter) --</option>';
+            allTenants.forEach((t, idx) => { select.innerHTML += `<option value="${idx}">${t.name} (${t.propertyType} - ${t.unit})</option>`; });
+            select.value = currentVal;
+        }
+
+        function jumpToTenantCard(tIndexStr) {
+            selectedFilterTenantIndex = tIndexStr;
+            if(tIndexStr !== "") expandedTenants[Number(tIndexStr)] = true;
+            renderTenants();
+            if(tIndexStr !== "") {
+                setTimeout(() => {
+                    const el = document.getElementById(`card_${tIndexStr}`);
+                    if(el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 100);
+            }
+        }
+
+        function updateBankMonthDropdown() {
+            const select = document.getElementById('bankMonthFilter');
+            if(!select) return;
+            let currentVal = select.value;
+            select.innerHTML = `<option value="all">🔍 Filter by Month (${ledgerYear})</option>`;
+            for (let i = 7; i <= currentMonthIndex; i++) { select.innerHTML += `<option value="${i}">${monthNames[i]} ${ledgerYear}</option>`; }
+            select.value = currentVal;
+        }
+
+        function populateTxFilterDropdowns() {
+            const mSel = document.getElementById('filterTxMonth'), cSel = document.getElementById('filterTxCat'), ySel = document.getElementById('filterTxYear');
+            if(!mSel || !cSel) return;
+            let curMVal = mSel.value, curCVal = cSel.value;
+            mSel.innerHTML = '<option value="all">All Months</option>';
+            for (let i = 7; i <= currentMonthIndex; i++) { mSel.innerHTML += `<option value="${i}">${monthNames[i]}</option>`; }
+            mSel.value = curMVal;
+            if(ySel) ySel.innerHTML = `<option value="${ledgerYear}">${ledgerYear}</option><option value="all">All Years</option>`;
+            let categories = ["School Fees", "ATM", "Other Income", "Property Tax", "Court Fees", "Wakeel Fees", "Grocery", "Family", "Utility / Bills", "Maintenance", "Salary", "Other"];
+            cSel.innerHTML = '<option value="all">All Categories</option>';
+            categories.forEach(cat => { cSel.innerHTML += `<option value="${cat}">${cat}</option>`; });
+            cSel.value = curCVal;
+        }
+
+        function resetTxFilters() {
+            document.getElementById('filterTxMonth').value = 'all';
+            document.getElementById('filterTxYear').value = ledgerYear;
+            document.getElementById('filterTxCat').value = 'all';
+            document.getElementById('filterTxSearch').value = '';
+            renderTransactions();
+        }
+
+        function toggleTxLedgerVisibility() {
+            txLedgerVisible = !txLedgerVisible;
+            document.getElementById('txLedgerContainer').style.display = txLedgerVisible ? 'block' : 'none';
+            document.getElementById('toggleTxLedgerBtn').innerText = txLedgerVisible ? "🔼 Hide Ledger" : "📜 Show Ledger";
+        }
+
+        function calculateSummary() {
+            let yearlyRent = 0, yearlyPaid = 0, monthlyRent = 0, monthlyPaid = 0;
+            let monthMeezan = 0, monthEasypaisa = 0, monthJazzcash = 0;
+            let totalIncrementSum = 0, totalDues = 0, activeCount = 0, totalSecuritySum = 0;
+            
+            document.getElementById('lblMonthlyRentTitle').innerText = `📅 Rent (${monthNames[currentMonthIndex]})`;
+            document.getElementById('lblMonthlyPaidTitle').innerText = `💵 Paid (${monthNames[currentMonthIndex]})`;
+
+            allTenants.forEach(tenant => {
+                runCalculations(tenant);
+                let joiningMonthIndex = 7;
+                if (tenant.joiningDate && tenant.joiningDate !== '-') {
+                    let jd = new Date(tenant.joiningDate); if(!isNaN(jd.getTime())) joiningMonthIndex = jd.getMonth();
+                }
+                let leftingMonthIndex = currentMonthIndex;
+                if (tenant.leftingDate && tenant.leftingDate !== '-') {
+                    let ld = new Date(tenant.leftingDate); if(!isNaN(ld.getTime())) leftingMonthIndex = ld.getMonth();
+                }
+
+                if (!tenant.isClosed) {
+                    activeCount++;
+                    totalIncrementSum += Number(tenant.increment || 0);
+                    let currMonthRow = tenant.ledger[currentMonthIndex];
+                    if (currMonthRow) totalDues += Number(currMonthRow.newDues || 0);
+                    totalSecuritySum += Number(tenant.securityDeposit || 0);
+                }
+
+                tenant.ledger.forEach((row, mIdx) => {
+                    if (mIdx >= joiningMonthIndex && mIdx <= leftingMonthIndex) {
+                        yearlyRent += Number(row.rentAmount || 0);
+                        yearlyPaid += Number(row.paid || 0);
+                        if (mIdx === currentMonthIndex) {
+                            monthlyRent += Number(row.rentAmount || 0);
+                            monthlyPaid += Number(row.paid || 0);
+                            let pVal = Number(row.paid || 0);
+                            if (pVal > 0) {
+                                let src = row.source || 'Cash';
+                                if (src === 'Meezan Bank') monthMeezan += pVal;
+                                else if (src === 'Easypaisa') monthEasypaisa += pVal;
+                                else if (src === 'JazzCash') monthJazzcash += pVal;
+                            }
+                        }
+                    }
+                });
+            });
+
+            allTransactions.forEach(tx => {
+                let amt = Number(tx.amount || 0), txDate = new Date(tx.date);
+                if (!isNaN(txDate.getTime())) {
+                    yearlyPaid += (tx.type === 'Income' ? amt : 0);
+                    if (txDate.getMonth() === currentMonthIndex && tx.type === 'Income') {
+                        monthlyPaid += amt;
+                        if (tx.source === 'Meezan Bank') monthMeezan += amt;
+                        else if (tx.source === 'Easypaisa') monthEasypaisa += amt;
+                        else if (tx.source === 'JazzCash') monthJazzcash += amt;
+                    }
+                }
+            });
+
+            document.getElementById('sumYearlyRent').innerText = `PKR ${yearlyRent.toLocaleString()}`;
+            document.getElementById('sumYearlyPaid').innerText = `PKR ${yearlyPaid.toLocaleString()}`;
+            document.getElementById('sumMonthlyRent').innerText = `PKR ${monthlyRent.toLocaleString()}`;
+            document.getElementById('sumMonthlyPaid').innerText = `PKR ${monthlyPaid.toLocaleString()}`;
+            document.getElementById('sumMonthMeezan').innerText = `PKR ${monthMeezan.toLocaleString()}`;
+            document.getElementById('sumMonthEasypaisa').innerText = `PKR ${monthEasypaisa.toLocaleString()}`;
+            document.getElementById('sumMonthJazzcash').innerText = `PKR ${monthJazzcash.toLocaleString()}`;
+            document.getElementById('sumTotalSecurity').innerText = `PKR ${totalSecuritySum.toLocaleString()}`;
+            document.getElementById('sumTotalIncrement').innerText = `PKR ${totalIncrementSum.toLocaleString()}`;
+            document.getElementById('sumTotalTenants').innerText = activeCount;
+            document.getElementById('sumTotalDues').innerText = `PKR ${totalDues.toLocaleString()}`;
+            
+            let totalInc = yearlyPaid, totalExp = 0;
+            allTransactions.forEach(tx => { if(tx.type === 'Expense') totalExp += Number(tx.amount || 0); });
+            document.getElementById('expSumIncome').innerText = `PKR ${totalInc.toLocaleString()}`;
+            document.getElementById('expSumExpense').innerText = `PKR ${totalExp.toLocaleString()}`;
+            document.getElementById('expNetBalance').innerText = `PKR ${(totalInc - totalExp).toLocaleString()}`;
+        }
+
+        function toggleAllMonthsHistory() {
+            showAllMonthsHistoryFlag = !showAllMonthsHistoryFlag;
+            document.getElementById('toggleMonthsBtn').innerText = showAllMonthsHistoryFlag ? "🔼 Show Filtered Only" : "📜 Show All Boxes";
+            document.getElementById('bankMonthFilter').value = 'all';
+            renderBankHistory();
+        }
+
+        function renderBankHistory() {
+            const container = document.getElementById('bankHistoryContainer');
+            if(!container) return;
+            container.innerHTML = '';
+            const sources = ["Cash", "Meezan Bank", "Easypaisa", "JazzCash"];
+            let sourceOpenings = { "Cash": 0, "Meezan Bank": 0, "Easypaisa": 0, "JazzCash": 0 };
+            let monthDataList = [];
+
+            for (let mIdx = 7; mIdx < monthNames.length; mIdx++) {
+                let mName = monthNames[mIdx] + " " + ledgerYear, rowDetails = {};
+                let grandRent = 0, grandOther = 0, grandExp = 0, grandClose = 0, grandOpen = 0;
+                sources.forEach(src => {
+                    let opening = sourceOpenings[src], rentSum = 0;
+                    allTenants.forEach(t => {
+                        let tJoinIdx = 7;
+                        if(t.joiningDate && t.joiningDate !== '-') { let jd = new Date(t.joiningDate); if(!isNaN(jd.getTime())) tJoinIdx = jd.getMonth(); }
+                        if(mIdx >= tJoinIdx && t.ledger[mIdx] && Number(t.ledger[mIdx].paid || 0) > 0 && (t.ledger[mIdx].source || 'Cash') === src) {
+                            rentSum += Number(t.ledger[mIdx].paid || 0);
+                        }
+                    });
+                    let otherSum = 0, expSum = 0;
+                    allTransactions.forEach(tx => {
+                        if(tx.source === src) {
+                            let txDate = new Date(tx.date);
+                            if(!isNaN(txDate.getTime()) && txDate.getMonth() === mIdx) {
+                                let amt = Number(tx.amount || 0);
+                                if(tx.type === 'Income') otherSum += amt; else if(tx.type === 'Expense') expSum += amt;
+                            }
+                        }
+                    });
+                    let closing = opening + rentSum + otherSum - expSum;
+                    sourceOpenings[src] = closing;
+                    rowDetails[src] = { opening, rent: rentSum, other: otherSum, expense: expSum, closing };
+                    grandOpen += opening; grandRent += rentSum; grandOther += otherSum; grandExp += expSum; grandClose += closing;
+                });
+                rowDetails["Grand Total"] = { opening: grandOpen, rent: grandRent, other: grandOther, expense: grandExp, closing: grandClose };
+                monthDataList.push({ mIdx, mName, rowDetails });
+            }
+
+            let validMonthList = monthDataList.filter(item => item.mIdx <= currentMonthIndex);
+            let filterVal = document.getElementById('bankMonthFilter').value;
+            let renderList = filterVal !== 'all' ? validMonthList.filter(item => item.mIdx === Number(filterVal)) : (showAllMonthsHistoryFlag ? [...validMonthList].reverse() : validMonthList.filter(item => item.mIdx === currentMonthIndex));
+            
+            if(renderList.length === 0) { container.innerHTML = `<div style="text-align:center; color:var(--text-muted); padding:12px;">Koi data mojood nahi hai.</div>`; return; }
+            
+            renderList.forEach(mObj => {
+                let isCurrent = mObj.mIdx === currentMonthIndex;
+                let tableHTML = `<div style="margin-bottom: 12px; border: 2px solid ${isCurrent ? 'var(--accent-color)' : 'var(--border-color)'}; border-radius: 8px; padding: 10px; background: var(--bg-color);"><h3 style="margin-top:0; color: ${isCurrent ? 'var(--success-color)' : 'var(--accent-color)'};">📦 ${mObj.mName} Ledger Box ${isCurrent ? '🟢 (Current Month)' : ''}</h3><div style="overflow-x: auto;"><table><thead><tr><th>Source</th><th>Opening</th><th>Rent</th><th>Other</th><th>Expenses</th><th>Closing</th></tr></thead><tbody>`;
+                sources.forEach(src => {
+                    let d = mObj.rowDetails[src];
+                    tableHTML += `<tr><td style="font-weight: bold; text-align: left;">${src}</td><td>${d.opening.toLocaleString()}</td><td style="color: var(--success-color);">${d.rent.toLocaleString()}</td><td style="color: var(--accent-color);">${d.other.toLocaleString()}</td><td style="color: var(--danger-color);">${d.expense.toLocaleString()}</td><td style="font-weight: bold; color: ${d.closing >= 0 ? 'var(--success-color)' : 'var(--danger-color)'};">${d.closing.toLocaleString()}</td></tr>`;
+                });
+                let gt = mObj.rowDetails["Grand Total"];
+                tableHTML += `<tr style="background: var(--card-bg); font-weight: bold;"><td style="text-align: left; color: var(--accent-color);">Grand Total</td><td>${gt.opening.toLocaleString()}</td><td style="color: var(--success-color);">${gt.rent.toLocaleString()}</td><td style="color: var(--accent-color);">${gt.other.toLocaleString()}</td><td style="color: var(--danger-color);">${gt.expense.toLocaleString()}</td><td style="color: ${gt.closing >= 0 ? 'var(--success-color)' : 'var(--danger-color)'};">${gt.closing.toLocaleString()}</td></tr></tbody></table></div></div>`;
+                container.innerHTML += tableHTML;
+            });
+        }
+
+        function addTransaction() {
+            const date = document.getElementById('txDate').value || new Date().toISOString().split('T')[0];
+            const type = document.getElementById('txType').value, category = document.getElementById('txCategory').value;
+            const source = document.getElementById('txSource').value, amount = Number(document.getElementById('txAmount').value) || 0;
+            const desc = document.getElementById('txDesc').value.trim();
+            if(amount <= 0) { alert('⚠️ Please enter a valid amount!'); return; }
+            allTransactions.push({ id: Date.now(), date, type, category, source, amount, desc });
+            allTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+            saveToStorage(); document.getElementById('txAmount').value = ''; document.getElementById('txDesc').value = '';
+            alert('✅ Transaction added successfully!');
+        }
+
+        function openEditTxModal(idx) {
+            requirePassword(() => {
+                const tx = allTransactions[idx];
+                document.getElementById('editTxIndex').value = idx;
+                document.getElementById('editTxDate').value = tx.date;
+                document.getElementById('editTxType').value = tx.type;
+                document.getElementById('editTxCategory').value = tx.category;
+                document.getElementById('editTxSource').value = tx.source;
+                document.getElementById('editTxAmount').value = tx.amount;
+                document.getElementById('editTxDesc').value = tx.desc || '';
+                document.getElementById('editTxModal').style.display = 'block';
+            });
+        }
+        function closeEditTxModal() { document.getElementById('editTxModal').style.display = 'none'; }
+        function saveEditedTransaction() {
+            const idx = Number(document.getElementById('editTxIndex').value), tx = allTransactions[idx];
+            tx.date = document.getElementById('editTxDate').value; tx.type = document.getElementById('editTxType').value;
+            tx.category = document.getElementById('editTxCategory').value; tx.source = document.getElementById('editTxSource').value;
+            tx.amount = Number(document.getElementById('editTxAmount').value) || 0; tx.desc = document.getElementById('editTxDesc').value.trim();
+            allTransactions.sort((a, b) => new Date(b.date) - new Date(a.date));
+            saveToStorage(); closeEditTxModal(); alert('✅ Transaction updated!');
+        }
+        function deleteTransaction(index) {
+            requirePassword(() => { if(confirm('Delete transaction?')) { allTransactions.splice(index, 1); saveToStorage(); } });
+        }
+
+        function renderTransactions() {
+            const tbody = document.getElementById('transactionsTableBody');
+            if(!tbody) return;
+            const fMonth = document.getElementById('filterTxMonth').value, fYear = document.getElementById('filterTxYear').value;
+            const fCat = document.getElementById('filterTxCat').value, fSearch = document.getElementById('filterTxSearch').value.toLowerCase().trim();
+            let filtered = allTransactions.filter(tx => {
+                let d = new Date(tx.date);
+                if(isNaN(d.getTime())) return false;
+                if(fYear !== 'all' && d.getFullYear().toString() !== fYear) return false;
+                if(fMonth !== 'all' && d.getMonth().toString() !== fMonth) return false;
+                if(fCat !== 'all' && tx.category !== fCat) return false;
+                if(fSearch !== '' && !(tx.desc.toLowerCase().includes(fSearch) || tx.category.toLowerCase().includes(fSearch) || tx.source.toLowerCase().includes(fSearch) || tx.type.toLowerCase().includes(fSearch))) return false;
+                return true;
+            });
+            let filteredSum = 0; filtered.forEach(tx => { filteredSum += Number(tx.amount || 0); });
+            document.getElementById('filteredTxSum').innerText = `Filtered Total Sum: PKR ${filteredSum.toLocaleString()}`;
+            tbody.innerHTML = filtered.length === 0 ? `<tr><td colspan="7" style="text-align:center; color:var(--text-muted);">Koi transaction mojood nahi hai.</td></tr>` : '';
+            filtered.forEach((tx) => {
+                let realIdx = allTransactions.indexOf(tx);
+                tbody.innerHTML += `<tr><td>${tx.date}</td><td style="color: ${tx.type === 'Income' ? 'var(--success-color)' : 'var(--danger-color)'}; font-weight:bold;">${tx.type}</td><td>${tx.category}</td><td>${tx.source}</td><td style="font-weight:bold; color: ${tx.type === 'Income' ? 'var(--success-color)' : 'var(--danger-color)'};">${Number(tx.amount).toLocaleString()}</td><td>${tx.desc || '-'}</td><td><button onclick="openEditTxModal(${realIdx})" style="background-color: var(--success-color); color: #fff; padding: 3px 6px; margin-right: 4px;">Edit</button><button onclick="deleteTransaction(${realIdx})" style="background-color: var(--danger-color); color: white; padding: 3px 6px;">Delete</button></td></tr>`;
+            });
+        }
+
+        let tenantAllMonths = {};
+        function toggleHistory(tIndex) { tenantAllMonths[tIndex] = !tenantAllMonths[tIndex]; renderTenants(); }
+
+        function renderTenants() {
+            const container = document.getElementById('tenantsContainer');
+            if(!container) return;
+            container.innerHTML = '';
+            if(!tenantListVisible) {
+                container.innerHTML = `<div class="card" style="text-align:center; color:var(--text-muted);">📁 Tenants List is hidden.</div>`;
+                calculateSummary(); updateJumpDropdown(); updateBankMonthDropdown(); return;
+            }
+            if(allTenants.length === 0) {
+                container.innerHTML = `<div class="card" style="text-align:center; color:var(--text-muted);">Koi tenant mojood nahi hai.</div>`;
+                calculateSummary(); updateJumpDropdown(); updateBankMonthDropdown(); return;
+            }
+
+            allTenants.forEach((tenant, tIndex) => {
+                if(selectedFilterTenantIndex !== "" && Number(selectedFilterTenantIndex) !== tIndex) return;
+                runCalculations(tenant);
+                let joiningMonthIndex = 7;
+                if (tenant.joiningDate && tenant.joiningDate !== '-') {
+                    let jd = new Date(tenant.joiningDate); if (!isNaN(jd.getTime())) joiningMonthIndex = jd.getMonth();
+                }
+                let leftingMonthIndex = currentMonthIndex;
+                if (tenant.leftingDate && tenant.leftingDate !== '-') {
+                    let ld = new Date(tenant.leftingDate); if (!isNaN(ld.getTime())) leftingMonthIndex = ld.getMonth();
+                }
+                let orderedMonths = [];
+                for(let i = leftingMonthIndex; i >= joiningMonthIndex; i--) { orderedMonths.push({ originalIndex: i, data: tenant.ledger[i] }); }
+                
+                let showAllTMonths = tenantAllMonths[tIndex] || false;
+                let visibleMonths = orderedMonths.filter(item => showAllTMonths || item.originalIndex === currentMonthIndex);
+                let rowsHTML = '';
+                visibleMonths.forEach(item => {
+                    let mIndex = item.originalIndex, row = item.data;
+                    const isCurrent = mIndex === currentMonthIndex ? 'background: var(--bg-color);' : '';
+                    let isJoiningMonth = mIndex === joiningMonthIndex;
+                    rowsHTML += `<tr style="${isCurrent}"><td><strong>${row.month}</strong> ${mIndex === currentMonthIndex ? '🟢' : ''}</td><td><input type="number" value="${Number(row.rentAmount)}" onchange="secureUpdateField(${tIndex}, ${mIndex}, 'rentAmount', this.value)" ${tenant.isClosed ? 'disabled' : ''}></td><td><input type="number" value="${Number(row.oldDues || 0)}" onchange="secureUpdateField(${tIndex}, ${mIndex}, 'oldDues', this.value)" style="color: var(--warning-color); font-weight:bold;" ${!isJoiningMonth || tenant.isClosed ? 'disabled' : ''}></td><td style="font-weight:bold; color:var(--accent-color);">${Number(row.totalPayable).toLocaleString()}</td><td><input type="number" value="${Number(row.paid)}" onchange="secureUpdateField(${tIndex}, ${mIndex}, 'paid', this.value)" style="color: var(--success-color); font-weight:bold;" ${tenant.isClosed ? 'disabled' : ''}></td><td><select onchange="secureUpdateField(${tIndex}, ${mIndex}, 'source', this.value)" ${tenant.isClosed ? 'disabled' : ''}><option value="Cash" ${row.source === 'Cash' ? 'selected' : ''}>Cash</option><option value="Meezan Bank" ${row.source === 'Meezan Bank' ? 'selected' : ''}>Meezan Bank</option><option value="Easypaisa" ${row.source === 'Easypaisa' ? 'selected' : ''}>Easypaisa</option><option value="JazzCash" ${row.source === 'JazzCash' ? 'selected' : ''}>JazzCash</option></select></td><td style="color: var(--danger-color); font-weight:bold;">${Number(row.newDues).toLocaleString()}</td><td style="color: var(--success-color);">${Number(row.advance || 0).toLocaleString()}</td><td><select onchange="secureUpdateField(${tIndex}, ${mIndex}, 'status', this.value)" style="color: ${row.status === 'Paid' ? 'var(--success-color)' : 'var(--danger-color)'}; font-weight: bold;" ${tenant.isClosed ? 'disabled' : ''}><option value="Unpaid" ${row.status === 'Unpaid' ? 'selected' : ''}>Unpaid</option><option value="Paid" ${row.status === 'Paid' ? 'selected' : ''}>Paid</option><option value="Partial" ${row.status === 'Partial' ? 'selected' : ''}>Partial</option></select></td><td><input type="date" value="${row.date !== '-' ? row.date : ''}" onchange="secureUpdateField(${tIndex}, ${mIndex}, 'date', this.value)" ${tenant.isClosed ? 'disabled' : ''}></td></tr>`;
+                });
+
+                let docInfoHTML = tenant.docName ? `<span style="color:var(--success-color);">📄 ${tenant.docName}</span>` : '';
+                let securityHTML = tenant.securityDeposit ? `<span style="color:var(--warning-color);">🔒 Security: PKR ${Number(tenant.securityDeposit).toLocaleString()} (${tenant.securitySource || 'Cash'})</span>` : '';
+                let isOpen = expandedTenants[tIndex] === true;
+
+                const card = document.createElement('div');
+                card.className = 'card'; card.id = `card_${tIndex}`;
+                card.innerHTML = `<div class="tenant-card-header" onclick="toggleTenantCollapse(${tIndex})"><div style="display: flex; align-items: center; gap: 10px;"><img src="${tenant.photo || 'https://via.placeholder.com/60?text=Photo'}" class="tenant-img" alt="Photo"><div><h3 style="margin:0; border:none; padding:0; color:var(--text-color);">👤 ${tenant.name} (${tenant.propertyType} - ${tenant.unit}) ${tenant.isClosed ? '<span style="color:var(--danger-color);">[CLOSED]</span>' : '<span style="color:var(--success-color);">[ACTIVE]</span>'}</h3><p style="margin:3px 0 0 0; color:var(--text-muted);">Rent: <strong>PKR ${Number(tenant.defaultRent).toLocaleString()}</strong> | ID: <strong>${tenant.tenantId}</strong></p></div></div><div style="font-weight: bold; color: var(--accent-color);">${isOpen ? '▲ Hide Ledger' : '▼ View Ledger'}</div></div><div class="collapsible-content ${isOpen ? 'open' : ''}"><div class="tenant-profile-box" style="margin-top: 10px;"><div style="flex: 1; min-width: 180px;"><p style="margin:3px 0; color:var(--accent-color);">Property ID: <strong>${tenant.propertyId}</strong></p><p style="margin:3px 0; color:var(--warning-color);">Details: <strong>${tenant.propertyDetails || 'N/A'}</strong> | Addr: <strong>${tenant.propertyAddress || 'N/A'}</strong></p><div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px;">${securityHTML} ${docInfoHTML}</div><p style="margin:4px 0 0 0; color:var(--text-muted);">Joining: <strong>${tenant.joiningDate || 'N/A'}</strong> | Lefting: <input type="date" value="${tenant.leftingDate !== '-' ? tenant.leftingDate : ''}" onchange="secureUpdateLeftingDate(${tIndex}, this.value)" style="width:120px; display:inline-block;"></p></div><div style="display: flex; align-items: center; gap: 6px; background: var(--bg-color); padding: 8px; border-radius: 6px; border: 1px solid var(--border-color);"><label style="margin:0;">Next Increment:</label><input type="number" value="${tenant.increment || 0}" onchange="secureUpdateIncrement(${tIndex}, this.value)" style="width: 75px; text-align: right;" ${tenant.isClosed ? 'disabled' : ''}></div><div style="display:flex; gap:6px; flex-wrap:wrap; width: 100%;"><button onclick="openEditModal(${tIndex})" style="background-color: var(--success-color); color: #fff; padding: 5px 10px;">✏️ Edit</button><button onclick="replaceTenantModal(${tIndex})" style="background-color: var(--warning-color); color: #fff; padding: 5px 10px;">🔄 Replace</button><button onclick="generateTenantReport(${tIndex})" style="background-color: var(--accent-color); color: white; padding: 5px 10px;">📊 Report & WhatsApp</button><button onclick="deleteTenant(${tIndex})" style="background-color: var(--danger-color); color: white; padding: 5px 10px;">🗑️ Delete</button></div></div><div style="margin-bottom: 8px;"><button onclick="toggleHistory(${tIndex})" style="background-color: var(--border-color); color: var(--accent-color); padding: 5px 10px;">${showAllTMonths ? '🔼 Show Current Month Only' : '📜 Show All Months History'}</button></div><div style="overflow-x: auto;"><table><thead><tr><th>Month</th><th>Rent</th><th>Old Dues</th><th>Payable</th><th>Paid</th><th>Source</th><th>New Dues</th><th>Advance</th><th>Status</th><th>Date</th></tr></thead><tbody>${rowsHTML}</tbody></table></div></div>`;
+                container.appendChild(card);
+            });
+            calculateSummary(); updateJumpDropdown(); updateBankMonthDropdown();
+        }
+
+        function toggleTenantCollapse(tIndex) { expandedTenants[tIndex] = !expandedTenants[tIndex]; renderTenants(); }
+
+        function openEditModal(tIndex) {
+            requirePassword(() => {
+                const tenant = allTenants[tIndex];
+                document.getElementById('editIndex').value = tIndex;
+                document.getElementById('editName').value = tenant.name || '';
+                document.getElementById('editPropertyType').value = tenant.propertyType || 'Shop';
+                document.getElementById('editUnitNo').value = tenant.unit || 'Unit #001';
+                document.getElementById('editPropertyDetails').value = tenant.propertyDetails || '';
+                document.getElementById('editPropertyAddress').value = tenant.propertyAddress || '';
+                document.getElementById('editDefaultRent').value = tenant.defaultRent || 24000;
+                document.getElementById('editSecurityDeposit').value = tenant.securityDeposit || 0;
+                document.getElementById('editSecuritySource').value = tenant.securitySource || 'Cash';
+                document.getElementById('editJoiningDate').value = tenant.joiningDate || '';
+                document.getElementById('editLeftingDate').value = (tenant.leftingDate && tenant.leftingDate !== '-') ? tenant.leftingDate : '';
+                document.getElementById('editModal').style.display = 'block';
+            });
+        }
+        function closeEditModal() { document.getElementById('editModal').style.display = 'none'; }
+        function saveEditedTenant() {
+            const tIndex = Number(document.getElementById('editIndex').value), tenant = allTenants[tIndex];
+            tenant.name = document.getElementById('editName').value.trim();
+            tenant.propertyType = document.getElementById('editPropertyType').value;
+            tenant.unit = document.getElementById('editUnitNo').value;
+            tenant.propertyDetails = document.getElementById('editPropertyDetails').value.trim();
+            tenant.propertyAddress = document.getElementById('editPropertyAddress').value.trim();
+            const newDefaultRent = Number(document.getElementById('editDefaultRent').value) || tenant.defaultRent;
+            if (newDefaultRent !== tenant.defaultRent) {
+                tenant.defaultRent = newDefaultRent; tenant.increment = Math.round(newDefaultRent * 0.10);
+                tenant.ledger.forEach(m => { m.rentAmount = newDefaultRent; });
+            }
+            tenant.securityDeposit = Number(document.getElementById('editSecurityDeposit').value) || 0;
+            tenant.securitySource = document.getElementById('editSecuritySource').value;
+            tenant.joiningDate = document.getElementById('editJoiningDate').value || tenant.joiningDate;
+            tenant.leftingDate = document.getElementById('editLeftingDate').value || '-';
+            const photoInput = document.getElementById('editTenantPhoto'), docInput = document.getElementById('editTenantDoc');
+            const finalizeUpdate = () => { saveToStorage(); renderTenants(); closeEditModal(); alert('✅ Updated!'); };
+            if (docInput.files && docInput.files[0]) tenant.docName = docInput.files[0].name;
+            if (photoInput.files && photoInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { tenant.photo = e.target.result; finalizeUpdate(); };
+                reader.readAsDataURL(photoInput.files[0]);
+            } else { finalizeUpdate(); }
+        }
+
+        function addTenant() {
+            const nameEl = document.getElementById('tenantName'), name = nameEl ? nameEl.value.trim() : '';
+            if(!name) { alert('⚠️ Enter Tenant Name!'); if(nameEl) nameEl.focus(); return; }
+            const propertyType = document.getElementById('propertyType').value, unit = document.getElementById('unitNo').value;
+            const propertyDetails = document.getElementById('propertyDetails').value.trim(), propertyAddress = document.getElementById('propertyAddress').value.trim();
+            const rent = Number(document.getElementById('defaultRent').value) || 24000;
+            const securityDeposit = Number(document.getElementById('securityDeposit').value) || 0, securitySource = document.getElementById('securitySource').value;
+            const joiningDate = document.getElementById('joiningDate').value || `${ledgerYear}-08-01`, leftingDate = document.getElementById('leftingDate').value || '-';
+            const photoEl = document.getElementById('tenantPhoto'), docEl = document.getElementById('tenantDoc');
+            const tenantId = 'T-' + Math.floor(1000 + Math.random() * 9000);
+            const propertyId = 'P-' + propertyType.substring(0,2).toUpperCase() + '-' + Math.floor(100 + Math.random() * 900);
+            
+            let defaultLedger = [];
+            for(let i=0; i<=currentMonthIndex; i++) {
+                defaultLedger.push({ month: monthNames[i], rentAmount: rent, oldDues: 0, totalPayable: rent, paid: 0, source: "Cash", newDues: rent, advance: 0, status: "Unpaid", date: "-" });
+            }
+            const finalizeCreation = (photoBase64, docName) => {
+                const newTenant = {
+                    id: Date.now(), tenantId, propertyId, name, propertyType, unit, propertyDetails, propertyAddress,
+                    defaultRent: rent, securityDeposit, securitySource, increment: Math.round(rent * 0.10), joiningDate, leftingDate, isClosed: false,
+                    photo: photoBase64 || '', docName: docName || '', ledger: defaultLedger
+                };
+                runCalculations(newTenant);
+                allTenants.push(newTenant); expandedTenants[allTenants.length - 1] = true;
+                saveToStorage(); renderTenants(); renderBankHistory();
+                nameEl.value = ''; document.getElementById('propertyDetails').value = ''; document.getElementById('propertyAddress').value = '';
+                alert(`✅ Tenant "${name}" saved!`);
+            };
+            let docName = (docEl && docEl.files && docEl.files[0]) ? docEl.files[0].name : '';
+            if (!capturedPhotoBase64 && photoEl && photoEl.files && photoEl.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { finalizeCreation(e.target.result, docName); };
+                reader.readAsDataURL(photoEl.files[0]);
+            } else { finalizeCreation(capturedPhotoBase64, docName); capturedPhotoBase64 = ''; }
+        }
+
+        function secureUpdateField(tIndex, mIndex, field, val) {
+            requirePassword(() => {
+                if(['rentAmount', 'oldDues', 'paid'].includes(field)) allTenants[tIndex].ledger[mIndex][field] = Number(val) || 0;
+                else allTenants[tIndex].ledger[mIndex][field] = val;
+                saveToStorage(); renderTenants(); renderBankHistory();
+            });
+        }
+        function secureUpdateLeftingDate(tIndex, val) { requirePassword(() => { allTenants[tIndex].leftingDate = val || '-'; saveToStorage(); renderTenants(); renderBankHistory(); }); }
+        function secureUpdateIncrement(tIndex, val) { requirePassword(() => { allTenants[tIndex].increment = Number(val) || 0; saveToStorage(); renderTenants(); }); }
+
+        function replaceTenantModal(tIndex) {
+            requirePassword(() => {
+                const oldTenant = allTenants[tIndex];
+                const newName = prompt(`Replacing tenant on Property ID: ${oldTenant.propertyId}\nEnter NEW Tenant Name:`);
+                if(!newName) return;
+                const newRent = prompt(`Enter Monthly Rent for ${newName}:`, oldTenant.defaultRent);
+                if(!newRent) return;
+                if (!oldTenant.leftingDate || oldTenant.leftingDate === '-') oldTenant.leftingDate = new Date().toISOString().split('T')[0];
+                let defaultLedger = [];
+                for(let i=0; i<=currentMonthIndex; i++) {
+                    defaultLedger.push({ month: monthNames[i], rentAmount: Number(newRent), oldDues: 0, totalPayable: Number(newRent), paid: 0, source: "Cash", newDues: Number(newRent), advance: 0, status: "Unpaid", date: "-" });
+                }
+                const newTenant = {
+                    id: Date.now(), tenantId: 'T-' + Math.floor(1000 + Math.random() * 9000), propertyId: oldTenant.propertyId, name: newName, propertyType: oldTenant.propertyType,
+                    unit: oldTenant.unit, propertyDetails: oldTenant.propertyDetails, propertyAddress: oldTenant.propertyAddress,
+                    defaultRent: Number(newRent), securityDeposit: 0, securitySource: 'Cash', increment: Math.round(Number(newRent) * 0.10), joiningDate: new Date().toISOString().split('T')[0],
+                    leftingDate: '-', isClosed: false, photo: '', docName: '', ledger: defaultLedger
+                };
+                runCalculations(newTenant);
+                allTenants.push(newTenant); expandedTenants[allTenants.length - 1] = true;
+                saveToStorage(); renderTenants(); renderBankHistory();
+                alert(`✅ Old tenant closed and new tenant "${newName}" added!`);
+            });
+        }
+
+        function generateTenantReport(tIndex) {
+            const t = allTenants[tIndex];
+            runCalculations(t);
+            let report = `📊 RIZWAN ESTATES - TENANT REPORT\nName: ${t.name}\nProperty: ${t.propertyType} (${t.unit}) - ID: ${t.propertyId}\nMonthly Rent: PKR ${Number(t.defaultRent).toLocaleString()}\nStatus: ${t.isClosed ? 'CLOSED' : 'ACTIVE'}\n\n--- LEDGER ---\n`;
+            let totalPendingDues = 0;
+            t.ledger.forEach(m => {
+                if(m.status !== "-") { report += `${m.month}: Rent=${m.rentAmount}, Paid=${m.paid}, Dues=${m.newDues} [${m.status}]\n`; totalPendingDues += Number(m.newDues || 0); }
+            });
+            report += `--------------------\nTotal Dues: PKR ${totalPendingDues.toLocaleString()}\n`;
+            navigator.clipboard.writeText(report).then(() => alert("📋 Report copied!"));
+            if(confirm("Send via WhatsApp?")) window.open(`https://wa.me/?text=` + encodeURIComponent(report), '_blank');
+        }
+
+        function deleteTenant(tIndex) { requirePassword(() => { if(confirm('Delete tenant?')) { allTenants.splice(tIndex, 1); saveToStorage(); renderTenants(); renderBankHistory(); } }); }
+        async function clearAllData() {
+            requirePassword(async () => {
+                if(confirm('⚠️ Reset all?')) {
+                    localStorage.clear(); await dbSet('tenants', []); await dbSet('transactions', []);
+                    allTenants = []; allTransactions = []; renderTenants(); renderTransactions(); renderBankHistory(); alert('✅ Cleared!');
+                }
+            });
+        }
+        function exportAllData() {
+            const blob = new Blob([JSON.stringify({ tenants: allTenants, transactions: allTransactions }, null, 2)], { type: 'application/json;charset=utf-8' });
+            const dl = document.createElement('a'); dl.href = URL.createObjectURL(blob); dl.download = `Rizwan_Estates_Master_Backup_${ledgerYear}.json`;
+            document.body.appendChild(dl); dl.click(); dl.remove();
+        }
+        async function importAllData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const parsed = JSON.parse(e.target.result);
+                    allTenants = Array.isArray(parsed) ? parsed : (parsed.tenants || []);
+                    allTransactions = Array.isArray(parsed) ? [] : (parsed.transactions || []);
+                    checkAndAutoGenerateMonths(); await saveToStorage();
+                    renderTenants(); renderTransactions(); renderBankHistory();
+                    alert(`✅ File loaded successfully!`);
+                } catch (err) { alert('❌ Invalid JSON!'); }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
