@@ -117,7 +117,7 @@
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
+      navigator.serviceWorker.register('/rizwan-estates/sw.js')
         .then(reg => console.log('Service Worker registered successfully!', reg))
         .catch(err => console.log('Service Worker registration failed:', err));
     });
